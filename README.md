@@ -20,9 +20,9 @@ cd mediapipe
 ```
 Demo 1 uses a frame reduced MediaPipe (described in the capstone report, implemented in commit d98bf446c65d2c046703090f4216b1a2c5ee4469 in mediapipe, note assistive-mouse-capstone/mediapipe itself is also a repo). [gesture_detection_calculator.cc](https://github.com/toby-l-baker/assistive-mouse-capstone/blob/master/mediapipe/mediapipe/calculators/util/gesture_detection_calculator.cc) gets the coordinates of 21 key points and uses hand geometry to determine the current gesture, and uses a number to represent it. There are two versions of this file, the old version simply counts the number of scretch fingers, the [new version](https://github.com/toby-l-baker/assistive-mouse-capstone/blob/master/mediapipe/mediapipe/calculators/util/gesture_detection_new_calculator.cc) uses a gesture definition like [this](https://docs.google.com/presentation/d/1R5K-rlorkxrP03RoG5ys7vCLMY0H_5_y4Tqb3lC5Uv8/edit?usp=sharing). Currently if you build MediaPipe you get the old version, you need to mannually substitute the file to get the new version. 
 
-The number representation of the gesture then goes to [pipe_writing_calculator.cc](https://github.com/toby-l-baker/assistive-mouse-capstone/blob/master/mediapipe/mediapipe/calculators/util/pipe_writing_calculator.cc) which calculates the centroid of the 5 picked key points (described in the report) and writes it to a FIFO structure with the gesture.
+The number representation of the gesture then goes to [pipe_writing_calculator.cc](https://github.com/ChrisSun99/AssistiveMouseTech/blob/main/mediapipe/mediapipe/calculators/util/pipe_writing_calculator.cc) which calculates the centroid of the 5 picked key points (described in the report) and writes it to a FIFO structure with the gesture.
 
-The [mouse control script](https://github.com/toby-l-baker/assistive-mouse-capstone/blob/master/mouse-control-test/mouse_control_for_demo1_with_new_gesures.py) works with the new version.
+The [mouse control script](https://github.com/ChrisSun99/AssistiveMouseTech/blob/main/mouse-control-test/mouse_control_for_demo1_with_new_gesures.py) works with the new version.
 ### Running Demo 2
 ```
 cd mediapipe
@@ -64,7 +64,7 @@ Read `cameramouse/README.md` to understand more about the purely OpenCV implemen
 `gesture_learning/models/` stores all models we trained for five models. There are KMeans, Gaussian Mixture, Random Forest and a simple DNN we tried. To be noticed, KMeans, Gaussian Mixture, Random Forest models are kept in joblib format (use `joblib_model= joblib.load('path')` to load). DNN model is kept in h5 format (use `keras.models.load_model('path')` to load).
 
 ## Mouse Control
-For Demo 1 mouse control, see the comments in the [script](https://github.com/toby-l-baker/assistive-mouse-capstone/blob/master/mouse-control-test/mouse_control_for_demo1_with_new_gesures.py) for details.
+For Demo 1 mouse control, see the comments in the [script](https://github.com/ChrisSun99/AssistiveMouseTech/blob/main/mouse-control-test/mouse_control_for_demo1_with_new_gesures.py) for details.
 
 ## Testing
 See the capstone report for details. Testing scripts can be found under `testing/`.
